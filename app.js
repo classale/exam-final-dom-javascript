@@ -7,18 +7,18 @@ const moodList = document.querySelector("#list-mood");
 // Creates the pairs to get the names from the values
 const MOD_NAME_PAIRS = {
 	"very-happy": "Very Happy",
-	happy: "Happy",
-	neutral: "Neutral",
-	sad: "Sad",
+	"happy": "Happy",
+	"neutral": "Neutral",
+	"sad": "Sad",
 	"very-sad": "Very Sad",
 };
 
 // Creates the pairs to get the colors from the values
 const MOOD_COLOR_PAIRS = {
 	"very-happy": "amber-300",
-	happy: "green-300",
-	neutral: "blue-300",
-	sad: "indigo-200",
+	"happy": "green-300",
+	"neutral": "blue-300",
+	"sad": "indigo-200",
 	"very-sad": "red-300",
 };
 
@@ -56,7 +56,7 @@ function createMoodModal() {
 		modal.remove();
 	});
 
-	// Creates the close button and the form's text
+	// Creates the close button
 	const closeBtn = modalForm.appendChild(
 		Object.assign(document.createElement("button"), {
 			className: "btn text",
@@ -64,13 +64,18 @@ function createMoodModal() {
 			style: "align-self: flex-end;",
 		})
 	);
-	closeBtn.addEventListener("click", () => modal.remove());
+
 	closeBtn.appendChild(
-		Object.assign(document.createElement("img"), {
-			src: "assets/close.svg",
+        Object.assign(document.createElement("img"), {
+            src: "assets/close.svg",
 			alt: "close",
 		})
 	);
+
+    // Adds an event to the button that makes it delete the modal once clicked
+	closeBtn.addEventListener("click", () => modal.remove());
+
+    // Creates the modal's heading text
 	modalForm.appendChild(
 		Object.assign(document.createElement("h2"), {
 			className: "text-preset-2",
@@ -102,7 +107,7 @@ function createMoodModal() {
 		);
 	}
 
-	// Creates the button
+	// Creates the "Log Mood" button
 	const submitBtn = modalForm.appendChild(
 		Object.assign(document.createElement("button"), {
 			className: "btn block blue-600 neutral-o-text",
