@@ -44,12 +44,12 @@ function createMoodModal() {
 		lastMoodName.innerHTML = MOD_NAME_PAIRS[mood];
 		lastMoodImg.src = `./assets/${mood}.svg`;
 
-		// Adds the selected mood into the mood-list
-		moodList.appendChild(
+		// Adds the selected mood into the mood-list. Makes sure to always add it on top of the list by inserting it before the first element
+		moodList.insertBefore(
 			Object.assign(document.createElement("div"), {
 				innerHTML: MOD_NAME_PAIRS[mood],
 				className: `mood-card ${MOOD_COLOR_PAIRS[mood]} text-preset-4`,
-			})
+			}), moodList.firstChild
 		);
 
 		// Deletes the modal
